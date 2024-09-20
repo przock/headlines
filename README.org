@@ -1,6 +1,6 @@
 #+title: HEADLINES 0.1
 
-* TODO TO ADD [0/5]
+* TODO TO ADD [0/6]
 - [ ] Add a config file
 - [ ] Add quick follow URL 
 - [ ] Upload to crates.io
