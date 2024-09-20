@@ -1,5 +1,6 @@
 [package]
 name = "headlines"
+description = "Interactively view the latest headlines in your terminal with rust"
 version = "0.1.0"
 edition = "2021"
 

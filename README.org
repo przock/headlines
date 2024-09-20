@@ -6,6 +6,7 @@
 - [ ] Upload to crates.io
 - [ ] Fix bugs(?)
 - [ ] Write a better README
+- [ ] Upload to the AUR :tada:
 
 * INTERACTIVELY VIEW THE LATEST NEWS IN YOUR TERMINAL WITH RUST
 ** Building
