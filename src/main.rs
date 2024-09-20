@@ -22,7 +22,7 @@ fn main() -> Result<(), io::Error> {
     let articles_map: BTreeMap<String, Value> = grab_news::news_get_as_json().expect("Unable to fetch news");
     let mut list_items = vec![];
 
-    for (k, v) in &articles_map {
+    for (_k, v) in &articles_map {
 	let title = v.get("title").and_then(Value::as_str).unwrap();
 	let description = v.get("description").and_then(Value::as_str).unwrap_or("No description");
 	let published_at = v.get("published_at").and_then(Value::as_str).unwrap_or("No date");
