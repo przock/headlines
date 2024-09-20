@@ -1,0 +1,23 @@
+#+title: HEADLINES 0.1
+
+* TODO TO ADD [0/5]
+- [ ] Add a config file
+- [ ] Add quick follow URL 
+- [ ] Upload to crates.io
+- [ ] Fix bugs(?)
+- [ ] Write a better README
+
+* INTERACTIVELY VIEW THE LATEST NEWS IN YOUR TERMINAL WITH RUST
+** Building
+- To build simply run:
+#+begin_src bash 
+git clone https://gitlab.com/pluskale/headlines && cd headlines && cargo build
+#+end_src
+
+** Features
+- A TUI Interface for viewing the latest news headlines
+ + Scroll through the titles to see:
+  + Sources
+  + Summary
+  + A link to the full article 
+  + The full content of the article :: If it's supported by the source

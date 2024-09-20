@@ -1,0 +1,13 @@
+[package]
+name = "headlines"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+toml = "0.8.19"
+chrono = "0.4.38"
+crossterm = "0.28.1"
+newsapi = "0.6.0"
+ratatui = "0.28.1"
+serde_json = "1.0.128"
+serde = { version = "1.0.210", features = ["derive"] }
