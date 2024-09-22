@@ -1,24 +1,106 @@
-#+title: HEADLINES 0.1
+#+title: HEADLINES 0.2
 
-* TODO TO ADD [0/6]
-- [ ] Add a config file
+* CHANGELOG
+- Added a changelog
+- Added a configuration file
+- Made the README much more useful
+- Added a fix for building on NixOS
+- Removed Herobrine
+
+* TODO TO ADD [2/6]
+- [X] Add a config file
 - [ ] Add quick follow URL 
 - [ ] Upload to crates.io
 - [ ] Fix bugs(?)
-- [ ] Write a better README
+- [X] Write a better README
 - [ ] Upload to the AUR :tada:
 
 * INTERACTIVELY VIEW THE LATEST NEWS IN YOUR TERMINAL WITH RUST
 ** Building
-- To build simply run:
+To build simply run:
 #+begin_src bash 
 git clone https://gitlab.com/pluskale/headlines && cd headlines && cargo build
 #+end_src
 
+*** Nix
+Cargo doesn't always like building certain things on NixOS because of it's unique packaging system
+To fix this issue I've included a default.nix file that should make Cargo happy
+to build on NixOS run:
+#+begin_src bash
+git clone https://gitlab.com/pluskale/headlines && cd headlines && nix-build
+#+end_src
+** Using 
+If you run headlines without the ~NEWSAPI_KEY~ env-var set it will panic (and screw up your terminal, this will be fixed in 0.3)
+To use headlines you must set ~NEWSAPI_KEY~ to a valid newsapi api key
+Generate a key at [[https://newsapi.org/][the newsapi website]]
+
 ** Features
+- The option to only get news from sources that make you happy
 - A TUI Interface for viewing the latest news headlines
  + Scroll through the titles to see:
   + Sources
   + Summary
   + A link to the full article 
   + The full content of the article :: If it's supported by the source
+
+** The Config File
+The default config file can be found in examples/headlines.toml
+If headlines is run without a config file it will use the defaults and generate an empty one at ~$HOME/.config/headlines/headlines.toml~
+
+Presently the config file is very simple with just 2 fields:
+#+begin_src toml
+[tui]
+ratio = 45
+
+[api]
+sources = "bbc-news"
+#+end_src
+~ratio~ defines the ratio of space allocated to the headlines of the articles to the information of the articles
+The value you give here will be the % value of the screen space allocated to the headlines
+
+~sources~ defines the sources that newsapi will pull from to show you news
+It should be a comma separated list:
+#+begin_src toml
+sources = "bbc-news, abc-news, espn"
+#+end_src
+These are the possible sources:
+
+#+title: Possible News Sources
+|----------------------+----------------------------------------------------|
+| Category             | Sources                                            |
+|----------------------+----------------------------------------------------|
+| General News         | abc-news, abc-news-au, al-jazeera-english,         |
+|                      | associated-press, bbc-news, cbc-news,              |
+|                      | cbs-news, cnn, fox-news, msnbc, nbc-news,          |
+|                      | reuters, the-huffington-post, the-washington-post, |
+|                      | the-times-of-india, usa-today, vice-news           |
+|----------------------+----------------------------------------------------|
+| Business and Finance | australian-financial-review, bloomberg,            |
+|                      | business-insider, business-insider-uk, fortune,    |
+|                      | financial-post, the-wall-street-journal            |
+|----------------------+----------------------------------------------------|
+| Technology           | ars-technica, engadget, techcrunch, techradar,     |
+|                      | wired, the-verge                                   |
+|----------------------+----------------------------------------------------|
+| Science and Health   | medical-news-today, new-scientist,                 |
+|                      | national-geographic                                |
+|----------------------+----------------------------------------------------|
+| Entertainment        | buzzfeed, entertainment-weekly, ign,               |
+|                      | mashable, mtv-news, mtv-news-uk,                   |
+|                      | the-lad-bible                                      |
+|----------------------+----------------------------------------------------|
+| Sports               | bleacher-report, espn, espn-cric-info,             |
+|                      | football-italia, fox-sports, nfl-news,             |
+|                      | nhl-news, talksport, the-sport-bible               |
+|----------------------+----------------------------------------------------|
+| Politics             | axios, politico, the-hill, breitbart-news,         |
+|                      | national-review, the-american-conservative         |
+|----------------------+----------------------------------------------------|
+| Miscellaneous        | crypto-coins-news, google-news,                    |
+|                      | google-news-au, google-news-ca,                    |
+|                      | google-news-in, google-news-uk, hacker-news,       |
+|                      | news24, news-com-au, newsweek,                     |
+|                      | new-york-magazine, next-big-future,                |
+|                      | polygon, recode, reddit-r-all, rte,                |
+|                      | four-four-two, time                                |
+|----------------------+----------------------------------------------------|

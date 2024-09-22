@@ -1,0 +1,101 @@
+# this is the default headlines configuration file
+# i'll probably add more options later.. if i feel like it.. maybe.......
+
+[tui]
+ratio = 45
+# the ratio of headlines to information
+# this value represents the % value of the headlines field
+
+[api]
+sources = "bbc-news"
+# a comma separated list of sources
+# possible sources:
+
+# general news #
+# abc-news
+# abc-news-au
+# al-jazeera-english
+# associated-press
+# bbc-news
+# cbc-news
+# cbs-news
+# cnn
+# fox-news
+# msnbc
+# nbc-news
+# reuters
+# the-huffington-post
+# the-washington-post
+# the-times-of-india
+# usa-today
+# vice-news
+
+# business and finance #
+# australian-financial-review
+# bloomberg
+# business-insider
+# business-insider-uk
+# fortune
+# financial-post
+# the-wall-street-journal
+
+# technology #
+# ars-technica
+# engadget
+# techcrunch
+# techradar
+# wired
+# the-verge
+
+# science and health #
+# medical-news-today
+# new-scientist
+# national-geographic
+
+# entertainment #
+# buzzfeed
+# entertainment-weekly
+# ign
+# mashable
+# mtv-news
+# mtv-news-uk
+# the-lad-bible
+
+# sports #
+# bleacher-report
+# espn
+# espn-cric-info
+# football-italia
+# fox-sports
+# nfl-news
+# nhl-news
+# talksport
+# the-sport-bible
+
+# politics #
+# axios
+# politico
+# the-hill
+# breitbart-news
+# national-review
+# the-american-conservative
+
+# misc #
+# crypto-coins-news
+# google-news
+# google-news-au
+# google-news-ca
+# google-news-in
+# google-news-uk
+# hacker-news
+# news24
+# news-com-au
+# newsweek
+# new-york-magazine
+# next-big-future
+# polygon
+# recode
+# reddit-r-all
+# rte
+# four-four-two
+# time
