@@ -10,8 +10,12 @@ use crossterm::{
 };
 use serde_json::Value;
 mod grab_news;
+mod config_reader;
 
 fn main() -> Result<(), io::Error> {
+
+    let config = config_reader::read_config().unwrap();
+
     // setup terminal
     enable_raw_mode()?;
     let mut stdout = io::stdout();
@@ -19,7 +23,7 @@ fn main() -> Result<(), io::Error> {
     let backend = CrosstermBackend::new(stdout);
     let mut terminal = Terminal::new(backend)?;
 
-    let articles_map: BTreeMap<String, Value> = grab_news::news_get_as_json().expect("Unable to fetch news");
+    let articles_map: BTreeMap<String, Value> = grab_news::news_get_as_json(config.api.sources.unwrap_or(String::from("bbc-news"))).expect("Unable to fetch news");
     let mut list_items = vec![];
 
     for (_k, v) in &articles_map {
@@ -31,7 +35,7 @@ fn main() -> Result<(), io::Error> {
 	let author = v.get("author").and_then(Value::as_str).unwrap_or("no author.");
 	let url = v.get("url").and_then(Value::as_str).unwrap_or("No URL");
 
-	list_items.push((ListItem::new(title), format!("Author: {}\n\nDesc: {}\n\nDate: {}\n\nSource: {}\n\nContent:{}\n\nURL: {}", author, description, published_at, source_name, content, url)));
+	list_items.push((ListItem::new(title), format!("Author: {}\n\nDesc: {}\n\nDate: {}\n\nSource: {}\n\nContent: {}\n\nURL: {}", author, description, published_at, source_name, content, url)));
     }
 
     let items_left: Vec<ListItem> = list_items.iter().map(|(item, _)| item.clone()).collect();
@@ -53,8 +57,8 @@ fn main() -> Result<(), io::Error> {
                 .margin(1)
                 .constraints(
                     [
-                        Constraint::Percentage(55),
-                        Constraint::Percentage(45),
+                        Constraint::Percentage(config.tui.ratio.unwrap_or(45) as u16),
+                        Constraint::Percentage(100 - config.tui.ratio.unwrap_or(45) as u16),
                     ].as_ref()
 		).split(f.area());
 
