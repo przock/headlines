@@ -1,4 +1,4 @@
-use std::{collections::BTreeMap, io};
+use std::{collections::BTreeMap, io, error::Error};
 use ratatui::{
     backend::CrosstermBackend, layout::{Constraint, Direction, Layout}, style::{Color, Style}, widgets::{Block, List, ListDirection, ListItem, ListState}, Terminal,
     widgets::{ Paragraph, Wrap },
@@ -14,7 +14,21 @@ mod config_reader;
 
 fn main() -> Result<(), io::Error> {
 
-    let config = config_reader::read_config().unwrap();
+    let mut config: Option<config_reader::Config> = None;
+    let mut sources: Option<String> = None;
+    let mut ratio: Option<u16> = None;
+
+    match config_reader::read_config() {
+	Ok(c) => {
+	    config = Some(c);
+	}
+	Err(_) => {}
+    }
+
+    if let Some(c) = config {
+	sources = c.api.sources;
+	ratio = c.tui.ratio;
+    }
 
     // setup terminal
     enable_raw_mode()?;
@@ -23,7 +37,7 @@ fn main() -> Result<(), io::Error> {
     let backend = CrosstermBackend::new(stdout);
     let mut terminal = Terminal::new(backend)?;
 
-    let articles_map: BTreeMap<String, Value> = grab_news::news_get_as_json(config.api.sources.unwrap_or(String::from("bbc-news"))).expect("Unable to fetch news");
+    let articles_map: BTreeMap<String, Value> = grab_news::news_get_as_json(sources.unwrap_or(String::from("bbc-news"))).expect("Unable to fetch news");
     let mut list_items = vec![];
 
     for (_k, v) in &articles_map {
@@ -57,8 +71,8 @@ fn main() -> Result<(), io::Error> {
                 .margin(1)
                 .constraints(
                     [
-                        Constraint::Percentage(config.tui.ratio.unwrap_or(45) as u16),
-                        Constraint::Percentage(100 - config.tui.ratio.unwrap_or(45) as u16),
+                        Constraint::Percentage(ratio.unwrap_or(45) as u16),
+                        Constraint::Percentage(100 - ratio.unwrap_or(45) as u16),
                     ].as_ref()
 		).split(f.area());
 

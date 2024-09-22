@@ -18,8 +18,9 @@ pub struct Api {
 }
 
 pub fn read_config() -> Result<Config, Box<dyn Error>> {
-    
-    let config: Config = toml::from_str(read_string().unwrap().as_str()).unwrap();
+    println!("reading config");
+    let config_str: String = read_string()?;
+    let config: Config = toml::from_str(config_str.as_str())?;
     Ok(config)
 }
 
