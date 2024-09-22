@@ -72,7 +72,7 @@ sources = "bbc-news, abc-news, espn"
 #+end_src
 These are the possible sources:
 
-#+title: Possible News Sources
+#+caption: Possible News Sources
 |----------------------+----------------------------------------------------|
 | Category             | Sources                                            |
 |----------------------+----------------------------------------------------|
