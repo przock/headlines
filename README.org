@@ -7,13 +7,13 @@
 - Added a fix for building on NixOS
 - Removed Herobrine
 
-* TODO TO ADD [2/6]
+* TODO TO ADD [3/6]
 - [X] Add a config file
 - [ ] Add quick follow URL 
 - [ ] Upload to crates.io
 - [ ] Fix bugs(?)
 - [X] Write a better README
-- [ ] Upload to the AUR :tada:
+- [X] Upload to the AUR :tada:
 
 * INTERACTIVELY VIEW THE LATEST NEWS IN YOUR TERMINAL WITH RUST
 ** Building
