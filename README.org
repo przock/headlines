@@ -24,14 +24,18 @@ git clone https://gitlab.com/pluskale/headlines && cd headlines && cargo build
 
 *** Nix
 Cargo doesn't always like building certain things on NixOS because of it's unique packaging system
+
 To fix this issue I've included a default.nix file that should make Cargo happy
+
 to build on NixOS run:
 #+begin_src bash
 git clone https://gitlab.com/pluskale/headlines && cd headlines && nix-build
 #+end_src
 ** Using 
 If you run headlines without the ~NEWSAPI_KEY~ env-var set it will panic (and screw up your terminal, this will be fixed in 0.3)
+
 To use headlines you must set ~NEWSAPI_KEY~ to a valid newsapi api key
+
 Generate a key at [[https://newsapi.org/][the newsapi website]]
 
 ** Features
@@ -45,6 +49,7 @@ Generate a key at [[https://newsapi.org/][the newsapi website]]
 
 ** The Config File
 The default config file can be found in examples/headlines.toml
+
 If headlines is run without a config file it will use the defaults and generate an empty one at ~$HOME/.config/headlines/headlines.toml~
 
 Presently the config file is very simple with just 2 fields:
@@ -56,9 +61,11 @@ ratio = 45
 sources = "bbc-news"
 #+end_src
 ~ratio~ defines the ratio of space allocated to the headlines of the articles to the information of the articles
+
 The value you give here will be the % value of the screen space allocated to the headlines
 
 ~sources~ defines the sources that newsapi will pull from to show you news
+
 It should be a comma separated list:
 #+begin_src toml
 sources = "bbc-news, abc-news, espn"
