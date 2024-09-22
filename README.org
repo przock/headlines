@@ -1,10 +1,7 @@
-#+title: HEADLINES 0.2
+#+title: HEADLINES 0.2.1
 
 * CHANGELOG
-- Added a changelog
-- Added a configuration file
-- Made the README much more useful
-- Added a fix for building on NixOS
+- Fixed a bug with configuration loading
 - Removed Herobrine
 
 * TODO TO ADD [3/6]
