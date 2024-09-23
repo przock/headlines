@@ -1,4 +1,4 @@
-use std::{collections::BTreeMap, io, error::Error};
+use std::{collections::BTreeMap, io};
 use ratatui::{
     backend::CrosstermBackend, layout::{Constraint, Direction, Layout}, style::{Color, Style}, widgets::{Block, List, ListDirection, ListItem, ListState}, Terminal,
     widgets::{ Paragraph, Wrap },
