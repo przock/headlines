@@ -3,7 +3,7 @@ let
 in
 pkgs.rustPlatform.buildRustPackage rec {
   pname = "headlines";
-  version = "0.2";
+  version = "0.2.3";
 
   src = ./.;
 
