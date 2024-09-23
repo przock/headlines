@@ -1,7 +1,7 @@
-#+title: HEADLINES 0.2.1
+#+title: HEADLINES 0.2.2
 
 * CHANGELOG
-- Fixed a bug with configuration loading
+- Removed an unused import
 - Removed Herobrine
 
 * TODO TO ADD [3/6]
