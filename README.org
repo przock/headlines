@@ -7,7 +7,7 @@
 * TODO TO ADD [3/5]
 - [X] Add a config file
 - [ ] Add quick follow URL 
-- [ ] Fix bugs(?)
+- [ ] Fix bugs
 - [X] Write a better README
 - [X] Upload to the AUR :tada:
 
