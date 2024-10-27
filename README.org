@@ -4,10 +4,9 @@
 - Removed an erroneous debug message
 - Removed Herobrine
 
-* TODO TO ADD [3/6]
+* TODO TO ADD [3/5]
 - [X] Add a config file
 - [ ] Add quick follow URL 
-- [ ] Upload to crates.io
 - [ ] Fix bugs(?)
 - [X] Write a better README
 - [X] Upload to the AUR :tada:
